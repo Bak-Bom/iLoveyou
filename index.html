@@ -762,15 +762,6 @@ p{
   </div>
 </div>
 
-<iframe
-  id="bgm"
-  width="0"
-  height="0"
-  src=""
-  frameborder="0"
-  allow="autoplay"
-></iframe>
-
 <script>
 const overlay = document.getElementById("overlay");
 const final = document.getElementById("final");
@@ -856,7 +847,6 @@ function typeWriter(el, text, speed = 30){
 }
 
 function openLetter(){
-  playMusic(); 
   overlay.style.display = "flex";
   typeWriter(textEl, introText, 40);
 }
@@ -945,18 +935,6 @@ for(let i=0;i<30;i++){
   `;
 
   bg.appendChild(heart);
-}
-
-let musicPlayed = false;
-
-function playMusic(){
-  if(musicPlayed) return;
-  musicPlayed = true;
-
-  const videoId = "OYPiXBIgvJ8";
-  const iframe = document.getElementById("bgm");
-  iframe.src =
-    `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}`;
 }
 
 </script>
