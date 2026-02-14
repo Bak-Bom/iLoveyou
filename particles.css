@@ -1,0 +1,719 @@
+#particleCanvas,
+#mainParticleCanvas,
+#fireworksCanvas,
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#fireworksCanvas {
+    z-index: 50;
+}
+
+#confettiCanvas {
+    z-index: 51;
+}
+
+.particle-system {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle-dot {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleMove 8s linear infinite;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes particleMove {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(
+            calc(var(--move-x, 100) * 1px),
+            calc(var(--move-y, 100) * 1px)
+        );
+        opacity: 0;
+    }
+}
+
+.particle-glow {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.8), transparent);
+    border-radius: 50%;
+    animation: glowParticle 4s ease-in-out infinite;
+}
+
+@keyframes glowParticle {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 1;
+    }
+}
+
+.particle-stream {
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(255, 105, 180, 0.8), transparent);
+    animation: streamFall 6s linear infinite;
+}
+
+@keyframes streamFall {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+.particle-burst {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    animation: burstExpand 1.5s ease-out forwards;
+}
+
+@keyframes burstExpand {
+    from {
+        transform: scale(1) translateX(0) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0) translateX(var(--burst-x, 100px)) translateY(var(--burst-y, 100px));
+        opacity: 0;
+    }
+}
+
+.particle-trail {
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), transparent);
+    animation: trailMove 2s linear infinite;
+}
+
+@keyframes trailMove {
+    from {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(200px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.particle-orbit {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 105, 180, 0.8);
+    border-radius: 50%;
+    animation: orbitRotate 8s linear infinite;
+}
+
+@keyframes orbitRotate {
+    from {
+        transform: rotate(0deg) translateX(150px) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translateX(150px) rotate(-360deg);
+    }
+}
+
+.particle-pulse {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, rgba(255, 20, 147, 0.9), transparent);
+    border-radius: 50%;
+    animation: pulseBeat 2s ease-in-out infinite;
+}
+
+@keyframes pulseBeat {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+.particle-swirl {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: swirlMove 10s ease-in-out infinite;
+}
+
+@keyframes swirlMove {
+    0% {
+        transform: rotate(0deg) translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(200px) rotate(-360deg);
+    }
+}
+
+.particle-wave {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 105, 180, 0.6),
+        transparent
+    );
+    animation: waveMove 8s ease-in-out infinite;
+}
+
+@keyframes waveMove {
+    0%, 100% {
+        transform: translateX(-100%) translateY(0);
+    }
+    50% {
+        transform: translateX(100%) translateY(-50px);
+    }
+}
+
+.particle-vortex {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 105, 180, 0.7);
+    border-radius: 50%;
+    animation: vortexSpin 12s linear infinite;
+}
+
+@keyframes vortexSpin {
+    from {
+        transform: rotate(0deg) translateX(300px) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: rotate(1080deg) translateX(0) rotate(-1080deg) scale(0);
+        opacity: 0;
+    }
+}
+
+.particle-zigzag {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    animation: zigzagMove 6s linear infinite;
+}
+
+@keyframes zigzagMove {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(50px) translateY(200px);
+    }
+    50% {
+        transform: translateX(-50px) translateY(400px);
+    }
+    75% {
+        transform: translateX(50px) translateY(600px);
+    }
+}
+
+.particle-bounce {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 105, 180, 0.8);
+    border-radius: 50%;
+    animation: bounceMove 4s ease-in-out infinite;
+}
+
+@keyframes bounceMove {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-200px);
+    }
+}
+
+.particle-spiral {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    animation: spiralOut 8s linear forwards;
+}
+
+.particle-constellation {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    animation: constellationTwinkle 3s ease-in-out infinite;
+}
+
+@keyframes constellationTwinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+.particle-comet {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+}
+
+.particle-comet::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
+    transform: translateY(-50%);
+}
+
+.particle-nebula {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, 
+        rgba(255, 105, 180, 0.3),
+        rgba(138, 43, 226, 0.2),
+        transparent
+    );
+    border-radius: 50%;
+    filter: blur(30px);
+    animation: nebulaFloat 20s ease-in-out infinite;
+}
+
+@keyframes nebulaFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(50px, -50px) scale(1.5);
+    }
+}
+
+.particle-meteor {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+    animation: meteorShoot 2s linear forwards;
+}
+
+@keyframes meteorShoot {
+    from {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    to {
+        transform: translate(500px, 500px);
+        opacity: 0;
+    }
+}
+
+.particle-meteor::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), transparent);
+}
+
+.particle-stardust {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    animation: stardustFloat 10s ease-in-out infinite;
+}
+
+@keyframes stardustFloat {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(
+            calc(var(--float-x, 50) * 1px),
+            calc(var(--float-y, 50) * 1px)
+        );
+        opacity: 1;
+    }
+}
+
+.particle-quantum {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 105, 180, 0.8);
+    border-radius: 50%;
+    animation: quantumBlink 1.5s steps(2) infinite;
+}
+
+@keyframes quantumBlink {
+    0%, 100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    50% {
+        opacity: 0;
+        transform: translate(
+            calc(var(--jump-x, 30) * 1px),
+            calc(var(--jump-y, 30) * 1px)
+        );
+    }
+}
+
+.particle-energy {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.9), rgba(255, 105, 180, 0.5));
+    border-radius: 50%;
+    animation: energyPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+@keyframes energyPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 0.3;
+    }
+}
+
+.particle-aurora {
+    position: absolute;
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(138, 43, 226, 0.6),
+        rgba(255, 105, 180, 0.6),
+        transparent
+    );
+    filter: blur(5px);
+    animation: auroraFlow 15s linear infinite;
+}
+
+@keyframes auroraFlow {
+    from {
+        transform: translateX(-100%) translateY(0);
+    }
+    to {
+        transform: translateX(100vw) translateY(-50px);
+    }
+}
+
+.particle-firefly {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 0, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+    animation: fireflyFly 8s ease-in-out infinite;
+}
+
+@keyframes fireflyFly {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translate(100px, -50px);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(50px, -100px);
+        opacity: 0.5;
+    }
+    75% {
+        transform: translate(-50px, -50px);
+        opacity: 1;
+    }
+}
+
+.particle-ribbon {
+    position: absolute;
+    width: 3px;
+    height: 60px;
+    background: linear-gradient(180deg,
+        rgba(255, 105, 180, 0.8),
+        rgba(138, 43, 226, 0.6),
+        transparent
+    );
+    animation: ribbonWave 4s ease-in-out infinite;
+}
+
+@keyframes ribbonWave {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-100px) rotate(180deg);
+    }
+}
+
+.particle-plasma {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle,
+        rgba(255, 20, 147, 0.4),
+        rgba(138, 43, 226, 0.3),
+        transparent
+    );
+    border-radius: 50%;
+    filter: blur(25px);
+    animation: plasmaPulse 6s ease-in-out infinite;
+}
+
+@keyframes plasmaPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.8);
+        opacity: 0.3;
+    }
+}
+
+.particle-crystal {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 105, 180, 0.7)
+    );
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: crystalRotate 8s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes crystalRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.particle-electric {
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.9),
+        rgba(0, 191, 255, 0.7),
+        transparent
+    );
+    animation: electricBolt 0.5s steps(4) infinite;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
+}
+
+@keyframes electricBolt {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(calc(var(--bolt-x, 10) * 1px));
+        opacity: 0.3;
+    }
+}
+
+.particle-constellation-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transform-origin: left center;
+    animation: lineGlow 3s ease-in-out infinite;
+}
+
+@keyframes lineGlow {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.particle-supernova {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle,
+        rgba(255, 255, 255, 1),
+        rgba(255, 215, 0, 0.8),
+        rgba(255, 105, 180, 0.4),
+        transparent
+    );
+    border-radius: 50%;
+    animation: supernovaExpand 3s ease-out forwards;
+}
+
+@keyframes supernovaExpand {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(50);
+        opacity: 0;
+    }
+}
+
+.particle-wormhole {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(138, 43, 226, 0.6);
+    border-radius: 50%;
+    animation: wormholeRotate 4s linear infinite;
+    box-shadow: inset 0 0 30px rgba(138, 43, 226, 0.4),
+                0 0 30px rgba(138, 43, 226, 0.4);
+}
+
+@keyframes wormholeRotate {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(0.5);
+    }
+    to {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.particle-blackhole {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle,
+        rgba(0, 0, 0, 0.9),
+        rgba(138, 43, 226, 0.3),
+        transparent
+    );
+    border-radius: 50%;
+    animation: blackholePull 10s linear infinite;
+}
+
+@keyframes blackholePull {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+    to {
+        transform: rotate(720deg) scale(0.8);
+    }
+}
+
+@media (max-width: 768px) {
+    .particle-dot,
+    .particle-glow,
+    .particle-burst,
+    .particle-trail,
+    .particle-swirl,
+    .particle-zigzag {
+        width: 2px;
+        height: 2px;
+    }
+    
+    .particle-nebula,
+    .particle-plasma {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .particle-aurora {
+        width: 100px;
+    }
+    
+    .particle-wormhole,
+    .particle-blackhole {
+        width: 80px;
+        height: 80px;
+    }
+}
